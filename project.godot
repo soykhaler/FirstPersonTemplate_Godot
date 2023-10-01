@@ -13,11 +13,11 @@ config_version=5
 config/name="FirstPersonTemplate"
 run/main_scene="res://node_3d.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://icon.png"
 
 [autoload]
 
-SimpleGrass="*res://addons/simplegrasstextured/singleton.tscn"
+
 
 [editor_plugins]
 
@@ -77,14 +77,6 @@ sgt_player_mov={
 "type": "vec3",
 "value": Vector3(0, 0, 0)
 }
-sgt_normal_displacement={
-"type": "sampler2D",
-"value": "res://addons/simplegrasstextured/images/normal.png"
-}
-sgt_motion_texture={
-"type": "sampler2D",
-"value": "res://addons/simplegrasstextured/images/motion.png"
-}
 sgt_wind_direction={
 "type": "vec3",
 "value": Vector3(1, 0, 0)
@@ -100,8 +92,4 @@ sgt_wind_strength={
 sgt_wind_turbulence={
 "type": "float",
 "value": 1.0
-}
-sgt_wind_pattern={
-"type": "sampler2D",
-"value": "res://addons/simplegrasstextured/images/wind_pattern.png"
 }
