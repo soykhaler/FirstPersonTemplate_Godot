@@ -1,0 +1,129 @@
+[gd_scene load_steps=10 format=3 uid="uid://dru60kpstsqwb"]
+
+[ext_resource type="PackedScene" uid="uid://br01chminlckq" path="res://player.tscn" id="1_7xctj"]
+[ext_resource type="PackedScene" uid="uid://ck3weatx4ste5" path="res://static_body_3d.tscn" id="2_doeps"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sac6i"]
+sky_top_color = Color(0.0745098, 0.486275, 0.658824, 1)
+sky_curve = 0.0699775
+ground_bottom_color = Color(0.180392, 0.67451, 0.937255, 1)
+ground_horizon_color = Color(1, 1, 1, 1)
+ground_curve = 0.0263903
+ground_energy_multiplier = 1.79
+sun_angle_max = 0.0
+sun_curve = 31.1904
+
+[sub_resource type="Sky" id="Sky_xac0c"]
+sky_material = SubResource("ProceduralSkyMaterial_sac6i")
+
+[sub_resource type="Environment" id="Environment_tq4cp"]
+background_mode = 2
+background_color = Color(1, 1, 1, 1)
+background_energy_multiplier = 3.87
+sky = SubResource("Sky_xac0c")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+ssr_enabled = true
+ssao_enabled = true
+ssao_radius = 1.32
+ssil_enabled = true
+ssil_radius = 8.37
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+sdfgi_cascades = 8
+sdfgi_energy = 0.15
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 1.98
+glow_bloom = 0.39
+fog_enabled = true
+fog_light_color = Color(0.298039, 0.552941, 0.701961, 1)
+fog_light_energy = 3.06
+fog_sun_scatter = 1.0
+fog_density = 0.001
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lktsm"]
+size = Vector3(48.2826, 1, 72.301)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4p5wg"]
+albedo_color = Color(0.690196, 0.00784314, 0.0980392, 1)
+roughness = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_1jf70"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_at5sp"]
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.79957, 7.66016, -1.26396)
+
+[node name="player" parent="." instance=ExtResource("1_7xctj")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.95639e-05, 0.288727, 8.88906)
+
+[node name="Camera" type="Camera3D" parent="player"]
+transform = Transform3D(0.999957, 2.99752e-05, -0.00928451, 0, 0.999995, 0.00322851, 0.00928456, -0.00322837, 0.999952, -0.0689928, 0.029552, -0.276869)
+current = true
+fov = 85.0
+
+[node name="ground" parent="." instance=ExtResource("2_doeps")]
+transform = Transform3D(0.340957, 0, 0, 0, 6.72869, -0.0126542, 0, 0.0896072, 0.950214, 1.10963, -4.15891, 8.62519)
+
+[node name="wall" parent="." instance=ExtResource("2_doeps")]
+transform = Transform3D(-9.61721e-09, -28.6191, 0, 0.219995, -1.25086e-06, -0.0134407, 0.0030719, -1.74664e-08, 0.962554, 7.625, 0.66939, 8.62519)
+
+[node name="wall2" parent="." instance=ExtResource("2_doeps")]
+transform = Transform3D(-9.61721e-09, -28.6191, 0, 0.219995, -1.25086e-06, -0.0134407, 0.0030719, -1.74664e-08, 0.962554, -5.72662, 0.66939, 8.62519)
+
+[node name="wall3" parent="." instance=ExtResource("2_doeps")]
+transform = Transform3D(0.00291316, 1.23352e-06, 0.922454, 0.208626, -1.25086e-06, -0.0128807, 8.99288e-09, 28.6191, -4.03218e-08, 0.303371, 0.414102, 3.8034)
+
+[node name="roof" parent="." instance=ExtResource("2_doeps")]
+transform = Transform3D(0.303583, 0, 0, 0, 18.0417, 0, 0, 0, 0.936042, 0.467865, 5.0464, 8.85962)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tq4cp")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.906617, 0.421954, 0, -0.421954, 0.906617, -0.482311, 3.79714, 7.65122)
+light_energy = 1.049
+light_indirect_energy = 13.253
+light_volumetric_fog_energy = 11.819
+light_angular_distance = 25.9
+shadow_enabled = true
+shadow_bias = 5.035
+shadow_normal_bias = 0.975
+shadow_transmittance_bias = -16.0
+shadow_opacity = 0.9
+shadow_blur = 0.0
+
+[node name="respawn collision" type="Area3D" parent="."]
+transform = Transform3D(-0.999957, -2.9975e-05, 0.00928442, 0, 0.999995, 0.00322851, -0.00928447, 0.00322837, -0.999952, 0.0372552, 3.18482, 3.69186)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="respawn collision"]
+transform = Transform3D(10.5247, 1.27329e-11, -3.72529e-09, 2.91038e-11, 0.988295, 5.58794e-09, 2.23517e-08, -2.32831e-09, 4.30843, -2.98023e-08, -14.4009, -4.76837e-07)
+shape = SubResource("BoxShape3D_lktsm")
+
+[node name="column" type="StaticBody3D" parent="."]
+transform = Transform3D(-1.62691, 0, -1.48395e-07, 0, 12.8697, 0, 1.42229e-07, 0, -1.69744, 4.30778, -2.02355, 10.5375)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="column"]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 0.608838, 0, 3.55271e-14, 0, 1, 0, 0.127707, 0)
+material_override = SubResource("StandardMaterial3D_4p5wg")
+mesh = SubResource("BoxMesh_1jf70")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="column"]
+shape = SubResource("BoxShape3D_at5sp")
+
+[node name="column2" type="StaticBody3D" parent="."]
+transform = Transform3D(-1.62691, 0, -1.48395e-07, 0, 12.8697, 0, 1.42229e-07, 0, -1.69744, -3.05623, -2.02355, 10.5375)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="column2"]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 0.608838, 0, 3.55271e-14, 0, 1, 0, 0.127707, 0)
+material_override = SubResource("StandardMaterial3D_4p5wg")
+mesh = SubResource("BoxMesh_1jf70")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="column2"]
+shape = SubResource("BoxShape3D_at5sp")
+
+[connection signal="body_entered" from="respawn collision" to="player" method="_on_area_3d_body_entered"]
